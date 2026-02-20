@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "web/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "OLLAMA_API_URL": "@ollama_api_url"
+  }
+}
