@@ -4,13 +4,15 @@ Modern web-based interface for local LLM chat.
 """
 
 import streamlit as st
+import os
 from ollama_backend import OllamaBackend
 
 
 def init_session_state():
     """Initialize Streamlit session state."""
     if "backend" not in st.session_state:
-        st.session_state.backend = OllamaBackend()
+        ollama_url = os.getenv("OLLAMA_API_URL", "http://localhost:11434")
+        st.session_state.backend = OllamaBackend(base_url=ollama_url)
     if "messages" not in st.session_state:
         st.session_state.messages = []
     if "models" not in st.session_state:
